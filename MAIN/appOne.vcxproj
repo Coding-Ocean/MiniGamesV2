@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ff59ffc7-d25d-4a59-a9f1-24d4192567a5}</ProjectGuid>
+    <RootNamespace>appOne</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>MAIN</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../libOne/inc;../FBX SDK/2016.1.2/include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../libOne/lib/64/deb;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libOne.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../libOne/inc</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>NotSet</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../libOne/lib/64/rel</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libOne.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\$(Platform)\$(Configuration)\$(ProjectName).exe</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="FADE.cpp" />
+    <ClCompile Include="gmain.cpp" />
+    <ClCompile Include="MANAGER.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FADE.h" />
+    <ClInclude Include="MANAGER.h" />
+    <ClInclude Include="STATE.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GAME00\GAME00.vcxproj">
+      <Project>{cca346fd-d7c6-417a-806f-2ad82042132c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME01\GAME01.vcxproj">
+      <Project>{6f5de60c-7b9a-433a-8a20-3ebbccf7d3f6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME02\GAME02.vcxproj">
+      <Project>{073cc410-ca07-407c-8f3b-1bd591e3d8d8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME03\GAME03.vcxproj">
+      <Project>{c8dfc31c-20b9-4aff-95ba-7352de55f5b9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME04\GAME04.vcxproj">
+      <Project>{2d0b5671-c94d-4691-95d1-50461a0fd1f6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME05\GAME05.vcxproj">
+      <Project>{6f8102e7-a9c0-41eb-850c-2d18e4925365}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME06\GAME06.vcxproj">
+      <Project>{e1b5420b-871f-466c-b5e6-33d48b78601e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME07\GAME07.vcxproj">
+      <Project>{d0b5999b-d3f5-4e23-877c-57a86a6214ba}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME08\GAME08.vcxproj">
+      <Project>{31b4197e-34f2-46fb-a25b-5def6bb4a563}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME09\GAME09.vcxproj">
+      <Project>{2ac7baf8-a5b9-4236-9266-83953b479af4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME10\GAME10.vcxproj">
+      <Project>{5a694609-b229-440f-957a-d6adf3c0b5c4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME11\GAME11.vcxproj">
+      <Project>{6917fc24-8e00-471a-9ed6-21f42dac9cf1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME12\GAME12.vcxproj">
+      <Project>{94d5231a-1192-43a6-9e66-71079d3fae33}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME13\GAME13.vcxproj">
+      <Project>{5286a9d7-dbcc-4bd1-9d17-472bae572008}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME14\GAME14.vcxproj">
+      <Project>{61ffb6df-572e-4289-94cf-5b4936cfafa3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME15\GAME15.vcxproj">
+      <Project>{151bc284-4dca-48f7-9498-1f1b6556305d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME16\GAME16.vcxproj">
+      <Project>{a66ef89b-40e0-4328-826f-98f55aa24f39}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME17\GAME17.vcxproj">
+      <Project>{29926fab-d601-4e17-9b78-d98160c9e578}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME18\GAME18.vcxproj">
+      <Project>{388d6522-283e-4cba-a4ad-72e12d7206a4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME19\GAME19.vcxproj">
+      <Project>{11df4fac-43db-43f7-9bf0-b75f3303ab50}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME20\GAME20.vcxproj">
+      <Project>{9f9dcddd-2e6a-47bd-b90d-1d79bde5b803}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME21\GAME21.vcxproj">
+      <Project>{499788ee-9108-4c8b-857b-bda3ef0df58f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME22\GAME22.vcxproj">
+      <Project>{21a6ff20-21f0-43cb-8db0-0ad13497f9f6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME23\GAME23.vcxproj">
+      <Project>{1b339a52-79d3-4111-b10b-c865666a97c2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME24\GAME24.vcxproj">
+      <Project>{23c1f73f-9a1d-47be-963b-579c0b69cfac}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME25\GAME25.vcxproj">
+      <Project>{7f180bac-cef2-4570-bb9a-54a2121b84ab}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME26\GAME26.vcxproj">
+      <Project>{04faa32b-452d-4cb3-b80b-9c6b889eb9c0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME27\GAME27.vcxproj">
+      <Project>{be6e779e-d4fa-474b-92cd-c0008485eacb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME28\GAME28.vcxproj">
+      <Project>{ccefff2c-26e3-4393-85f0-aedb4bc70f8a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GAME29\GAME29.vcxproj">
+      <Project>{8d9848aa-46a7-4775-a4e9-d3baeb2fa71a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MENU\MENU.vcxproj">
+      <Project>{6c556fcd-06b5-4289-bbad-d8b0af8393c1}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
