@@ -11,8 +11,8 @@ public:
     void proc();
 private:
     int ClearImg;
-    float RectX;
-    float RectY;
+    float OfstX;
+    float OfstY;
     float RectWidth;
     float RectHeight;
     int NumGames;

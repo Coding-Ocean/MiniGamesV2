@@ -1,3 +1,6 @@
+/*メニューに表示するタイトル
+GAME10
+*/
 #pragma once
 #include"../MAIN/STATE.h"
 

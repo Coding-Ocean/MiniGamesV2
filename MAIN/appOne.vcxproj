@@ -119,8 +119,8 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../libOne/inc;../FBX SDK/2016.1.2/include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>

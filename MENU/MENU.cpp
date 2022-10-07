@@ -47,28 +47,41 @@ void MENU::create() {
 
     Tate = 5;
     Yoko = 6;
+    RectWidth = 250.0f;
+    RectHeight = 120.0f;
+    
+    OfstX = (width - RectWidth * Yoko) / 2;
+    OfstY = (height - RectHeight * Tate) / 2;
+
     NumGames = Tate * Yoko;
-
-    RectWidth = 200.0f;
-    RectHeight = 100.0f;
-    RectX = (width - RectWidth * Yoko) / 2;
-    RectY = (height - RectHeight * Tate) / 2;
-
     Hue = 360.0f / NumGames;
     Satu = 50;
     Valu = 100;
 
     //18x3文字までタイトルとして表示できる
-    std::ifstream ifs("../menu/titles.txt");
-    if (ifs) {
-        const int buffer_size = 64;
-        char buffer[buffer_size];
-        for (int i = 0; i < NumGames; i++) {
+    std::ifstream ifs;
+    const int buffer_size = 128;
+    char buffer[buffer_size];
+    int number = 0;
+    Titles.clear();
+    while (number < NumGames) {
+        sprintf_s(buffer, buffer_size, "../GAME%02d/GAME.h", number);
+        ifs.open(buffer);
+        if (ifs) {
+            //１行目はコメントのはず
+            ifs.getline(buffer, buffer_size);
+            //２行目がタイトルのはず
             ifs.getline(buffer, buffer_size);
             Titles.push_back(buffer);
+            ifs.close();
         }
+        else {
+            Titles.push_back("open file error");
+        }
+        number++;
     }
 
+    //フェードインスタート
     //manager->fade->setSpeed( 15 );
     manager->fade->fadeInTrigger();
 }
@@ -81,35 +94,48 @@ void MENU::destroy()
 void MENU::proc(){
     char& selectIdx = manager->selectIdx; //名前を短くする
 
-    //WASDキーでゲームを選択する
-    if( isTrigger( KEY_D ) ){
+    //WASDキー、または、矢印キーでゲームを選択する
+    if (isTrigger(KEY_D) || isTrigger(KEY_RIGHT)) {
         selectIdx++;
-        if( selectIdx >= NumGames ){
+        if (selectIdx >= NumGames) {
             selectIdx = 0;
         }
     }
-    if( isTrigger( KEY_A ) ){
+    if (isTrigger(KEY_A) || isTrigger(KEY_LEFT)) {
         selectIdx--;
-        if( selectIdx < 0 ){
+        if (selectIdx < 0) {
             selectIdx = NumGames - 1;
         }
     }
-    if( isTrigger( KEY_S ) ){
+    if (isTrigger(KEY_S) || isTrigger(KEY_DOWN)) {
         selectIdx += Yoko;
-        if( selectIdx >= NumGames ){
-            selectIdx = selectIdx - ( NumGames - 1 );
-            if( selectIdx == Yoko ){
+        if (selectIdx >= NumGames) {
+            selectIdx = selectIdx - (NumGames - 1);
+            if (selectIdx == Yoko) {
                 selectIdx = 0;
             }
         }
     }
-    if( isTrigger( KEY_W ) ){
+    if (isTrigger(KEY_W) || isTrigger(KEY_UP)) {
         selectIdx -= Yoko;
-        if( selectIdx < 0 ){
-            selectIdx = selectIdx + ( NumGames - 1 );
-            if( selectIdx == ( NumGames - 1 ) - Yoko ){
-                selectIdx = ( NumGames - 1 );
+        if (selectIdx < 0) {
+            selectIdx = selectIdx + (NumGames - 1);
+            if (selectIdx == (NumGames - 1) - Yoko) {
+                selectIdx = (NumGames - 1);
             }
+        }
+    }
+    //マウスで選択
+    float left = OfstX;
+    float right = OfstX + RectWidth * Yoko;
+    float top = OfstY;
+    float bottom = OfstY + RectHeight * Tate;
+    if (mouseX > left && mouseX<right && mouseY>top && mouseY < bottom) {
+        int yoko = int((mouseX - OfstX) / RectWidth);
+        int tate = int((mouseY - OfstY) / RectHeight);
+        selectIdx = yoko + tate * Yoko;
+        if (isTrigger(MOUSE_LBUTTON)) {
+            manager->fade->fadeOutTrigger();
         }
     }
 
@@ -119,9 +145,10 @@ void MENU::proc(){
     angleMode(DEGREES);
     rectMode(CORNER);
     textMode(TOP);
-    textSize(20);
+    textSize(RectWidth/10);
     for( int i = 0; i < Tate; i++ ){
         for( int j = 0; j < Yoko; j++ ){
+            //tile
             int k = i * Yoko + j;
             Valu = 60;
             if( k == selectIdx ){
@@ -130,21 +157,25 @@ void MENU::proc(){
             strokeWeight(10);
             stroke(0);
             fill(Hue*k,Satu,Valu);
-            rect( RectX + RectWidth * j, RectY + RectHeight * i,RectWidth,RectHeight);
+            rect( OfstX + RectWidth * j, OfstY + RectHeight * i,RectWidth,RectHeight);
 
             //18x3文字までタイトルとして表示できる
             fill(0, 0, 100);
-            int len = Titles[k].size();
+            int len = (int)Titles[k].size();
             int cnt = 0;
             while (len>0) {
                 int l = len < 18 ? len : 18;
-                text(Titles[k].substr(cnt*18, l).c_str(), RectX + 10 + RectWidth * j, RectY + 10 +25*cnt + RectHeight * i);
+                text(Titles[k].substr(cnt*18, l).c_str(), 
+                    OfstX + 10 + RectWidth * j, 
+                    OfstY + 10 +25*cnt + RectHeight * i
+                );
                 len -= 18;
                 cnt++;
             }
 
+            //clear flag
             if( manager->clearFlags[ k ] ){
-                image( ClearImg, RectX + RectWidth * j, RectY + RectHeight * i);
+                image( ClearImg, OfstX + RectWidth * j, OfstY + RectHeight * i);
             }
         }
     }

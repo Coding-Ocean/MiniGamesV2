@@ -6,7 +6,4 @@
   <ItemGroup>
     <ClCompile Include="MENU.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="titles.txt" />
-  </ItemGroup>
 </Project>
