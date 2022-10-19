@@ -1,6 +1,3 @@
-/*メニューに表示するタイトル
-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstu
-*/
 #pragma once
 #include"../MAIN/STATE.h"
 

@@ -10,7 +10,7 @@ namespace GAME03 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 
 	void GAME::create()
 	{
-		Img = loadImage("../game03/assets/unkoWhite.png");
+		Img = loadImage("assets/GAME03/unkoWhite.png");
 
 		Diameter = 200;
 		Px = -100;
@@ -30,7 +30,6 @@ namespace GAME03 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 	{
 		//更新
 		Px += Vx;
-
 		//描画
 		clear(200);
 		circle(Px, Py, Diameter);

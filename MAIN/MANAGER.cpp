@@ -10,7 +10,7 @@ MANAGER::MANAGER() {
 
     //クリア済みゲームフラッグを読みこむ
     FILE* fp = 0;
-    fopen_s(&fp, "data/data.txt", "rb");
+    fopen_s(&fp, "assets/MANAGER/data.txt", "rb");
     if (fp) {
         fread(clearFlags, 1, 30, fp);
         fread(&selectIdx, 1, 1, fp);
@@ -37,7 +37,7 @@ MANAGER::MANAGER() {
 MANAGER::~MANAGER() {
     //クリアしたゲームの状態をセーブ
     FILE* fp = 0;
-    fopen_s(&fp, "data/data.txt", "wb");
+    fopen_s(&fp, "assets/MANAGER/data.txt", "wb");
     if (fp) {
         fwrite(clearFlags, 1, 30, fp);
         fwrite(&selectIdx, 1, 1, fp);

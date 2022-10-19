@@ -10,7 +10,7 @@ namespace GAME00 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 
 	void GAME::create()
 	{
-		Img = loadImage("../game02/assets/unkoWhite.png");
+		Img = loadImage("assets/GAME00/unkoWhite.png");
 
 		Diameter = 200;
 		Px = -100;
@@ -57,10 +57,8 @@ namespace GAME00 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 		if (BackToMenuFlag == 1) {
 			manager->fade->fadeOutTrigger();
 			if (manager->fade->fadeOutEndFlag()) {
-
 				manager->nextState = new MENU(manager);
 			}
 		}
 	}
-
 }

@@ -6,6 +6,7 @@ public:
     void fadeOutTrigger();
     void draw();
     int fadeOutEndFlag();
+    int fadeInEndFlag();
     void setSpeed( int speed );
 private:
     enum FADE_STATE { 

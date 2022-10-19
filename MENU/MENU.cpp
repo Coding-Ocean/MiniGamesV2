@@ -1,5 +1,5 @@
 #include<fstream>
-#include "../libOne/inc/libOne.h"
+#include"../libOne/inc/libOne.h"
 #include"../MAIN/MANAGER.h"
 #include"../MAIN/FADE.h"
 #include"../GAME00/GAME.h"
@@ -43,7 +43,7 @@ MENU::~MENU(){
 }
 
 void MENU::create() {
-    ClearImg = loadImage("data/2dgraphics/clear.png");
+    ClearImg = loadImage("assets/MENU/clear.png");
 
     Tate = 5;
     Yoko = 6;
@@ -58,31 +58,29 @@ void MENU::create() {
     Satu = 50;
     Valu = 100;
 
-    //18x3文字までタイトルとして表示できる
+    //半角18文字x3行までタイトルとして表示できる
     std::ifstream ifs;
     const int buffer_size = 128;
     char buffer[buffer_size];
     int number = 0;
     Titles.clear();
     while (number < NumGames) {
-        sprintf_s(buffer, buffer_size, "../GAME%02d/GAME.h", number);
+        sprintf_s(buffer, buffer_size, "assets/GAME%02d/title.txt", number);
         ifs.open(buffer);
         if (ifs) {
-            //１行目はコメントのはず
-            ifs.getline(buffer, buffer_size);
-            //２行目がタイトルのはず
-            ifs.getline(buffer, buffer_size);
-            Titles.push_back(buffer);
+            TITLE_LINES title;
+            int idx = 0;
+            while(ifs.getline(buffer, buffer_size) && idx<3){
+                 title.lines[idx] = buffer;
+                 idx++;
+            }
+            Titles.push_back(title);
             ifs.close();
-        }
-        else {
-            Titles.push_back("open file error");
         }
         number++;
     }
 
     //フェードインスタート
-    //manager->fade->setSpeed( 15 );
     manager->fade->fadeInTrigger();
 }
 
@@ -148,7 +146,10 @@ void MENU::proc(){
     textSize(RectWidth/10);
     for( int i = 0; i < Tate; i++ ){
         for( int j = 0; j < Yoko; j++ ){
-            //tile
+            //表示位置
+            float px = OfstX + RectWidth * j;
+            float py = OfstY + RectHeight * i;
+            //タイトル
             int k = i * Yoko + j;
             Valu = 60;
             if( k == selectIdx ){
@@ -157,25 +158,18 @@ void MENU::proc(){
             strokeWeight(10);
             stroke(0);
             fill(Hue*k,Satu,Valu);
-            rect( OfstX + RectWidth * j, OfstY + RectHeight * i,RectWidth,RectHeight);
-
-            //18x3文字までタイトルとして表示できる
+            rect(px, py, RectWidth, RectHeight);
+            //テキスト
             fill(0, 0, 100);
-            int len = (int)Titles[k].size();
-            int cnt = 0;
-            while (len>0) {
-                int l = len < 18 ? len : 18;
-                text(Titles[k].substr(cnt*18, l).c_str(), 
-                    OfstX + 10 + RectWidth * j, 
-                    OfstY + 10 +25*cnt + RectHeight * i
-                );
-                len -= 18;
-                cnt++;
+            if (k == selectIdx) {
+                fill(0);
             }
-
-            //clear flag
+            for (int l = 0; l < 3; l++) {
+                text(Titles[k].lines[l].c_str(), px + 10, py + 10 + (RectWidth / 10) * l);
+            }
+            //クリアチェック画像
             if( manager->clearFlags[ k ] ){
-                image( ClearImg, OfstX + RectWidth * j, OfstY + RectHeight * i);
+                image(ClearImg, px, py);
             }
         }
     }

@@ -15,6 +15,9 @@ void FADE::fadeOutTrigger(){
     if( FadeState == FADE_IN_END ) FadeState = FADE_OUT_TRIGGER;
 }
 void FADE::draw(){
+    if( FadeState == FADE_IN_END ){
+        return;
+    }
     colorMode(RGB);
     rectMode(CORNER);
     stroke(0);
@@ -33,8 +36,6 @@ void FADE::draw(){
             FadeState = FADE_IN_END;
         }
     }
-    else if( FadeState == FADE_IN_END ){
-    }
     else if( FadeState == FADE_OUT_TRIGGER ){
         Alpha = 0;
         FadeState = FADE_OUT;
@@ -52,6 +53,9 @@ void FADE::draw(){
         fill(0, 0, 0, 255);
         rect(0, 0, width, height);
     }
+}
+int FADE::fadeInEndFlag() {
+    return (FadeState == FADE_IN_END);
 }
 int FADE::fadeOutEndFlag(){
     return ( FadeState == FADE_OUT_END );

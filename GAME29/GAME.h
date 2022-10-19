@@ -1,6 +1,3 @@
-/*メニューに表示するタイトル
-GAME29
-*/
 #pragma once
 #include"../MAIN/STATE.h"
 
@@ -14,17 +11,26 @@ namespace GAME29 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 		void destroy();
 		void proc();
 	private:
-		//ここに必要な記憶場所を用意する
-		//画像表示用
-		int Img;
-		//円表示用
-		float Diameter;//直径
-		float Px;
-		float Py;
-		float Vx;
-
-		//以下はいじらないでよい
+		//シーケンス遷移
+		const int TITLE = 0;
+		const int PLAY = 1;
+		const int OVER = 2;
+		const int CLEAR = 3;
+		int State;
+		void Init();
+		void Title();
+		void Play();
+		void Over();
 		int BackToMenuFlag = 0;
+		void BackToMenu();
+		//うんこ
+		int UnkoImg;
+		float UnkoAngle;
+		//円
+		float CircleDiameter;//直径
+		float CirclePx;
+		float CirclePy;
+		float CircleVx;
 	};
 
 }

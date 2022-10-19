@@ -1,9 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="GAME.h" />
+    <ClInclude Include="PLAYER.h" />
+    <ClInclude Include="UNKO.h" />
+    <ClInclude Include="GAME_MANAGER.h">
+      <Filter>STATE</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME_STATE.h">
+      <Filter>STATE</Filter>
+    </ClInclude>
+    <ClInclude Include="OVER.h">
+      <Filter>STATE</Filter>
+    </ClInclude>
+    <ClInclude Include="PLAY.h">
+      <Filter>STATE</Filter>
+    </ClInclude>
+    <ClInclude Include="TITLE.h">
+      <Filter>STATE</Filter>
+    </ClInclude>
+    <ClInclude Include="GAME.h">
+      <Filter>STATE</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GAME.cpp" />
+    <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="UNKO.cpp" />
+    <ClCompile Include="GAME_MANAGER.cpp">
+      <Filter>STATE</Filter>
+    </ClCompile>
+    <ClCompile Include="OVER.cpp">
+      <Filter>STATE</Filter>
+    </ClCompile>
+    <ClCompile Include="PLAY.cpp">
+      <Filter>STATE</Filter>
+    </ClCompile>
+    <ClCompile Include="TITLE.cpp">
+      <Filter>STATE</Filter>
+    </ClCompile>
+    <ClCompile Include="GAME.cpp">
+      <Filter>STATE</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="STATE">
+      <UniqueIdentifier>{cd93e243-c39d-482a-a764-a315296146bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

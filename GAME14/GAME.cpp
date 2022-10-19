@@ -10,7 +10,7 @@ namespace GAME14 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 
 	void GAME::create()
 	{
-		Img = loadImage("../game14/assets/unkoWhite.png");
+		Img = loadImage("assets/GAME14/unkoWhite.png");
 
 		Diameter = 200;
 		Px = -100;

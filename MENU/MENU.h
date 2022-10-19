@@ -22,5 +22,8 @@ private:
     float Satu;
     float Valu;
     float Angle;
-    std::vector<std::string> Titles;
+    struct TITLE_LINES {
+        std::string lines[3];
+    };
+    std::vector<TITLE_LINES> Titles;
 };
