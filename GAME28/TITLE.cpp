@@ -1,6 +1,5 @@
 #include"../libOne/inc/graphic.h"
 #include"../libOne/inc/input.h"
-#include"GAME.h"
 #include"GAME_MANAGER.h"
 #include"PLAY.h"
 #include "TITLE.h"

@@ -1,11 +1,10 @@
 #include "TITLE.h"
-#include "GAME.h"
 #include "PLAYER.h"
 #include "UNKO.h"
 #include "GAME_MANAGER.h"
 namespace GAME28 {
 
-    GAME_MANAGER::GAME_MANAGER(GAME* g)
+    GAME_MANAGER::GAME_MANAGER(class GAME* g)
         :game(g)
     {
         player = new PLAYER;
@@ -33,11 +32,6 @@ namespace GAME28 {
             state = nextState;
             state->create();
         }
-    }
-
-    void GAME_MANAGER::backToMenu()
-    {
-        game->backToMenu();
     }
 
 }

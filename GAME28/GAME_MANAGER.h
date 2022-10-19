@@ -7,12 +7,11 @@ namespace GAME28 {
         GAME_MANAGER(class GAME* g);
         ~GAME_MANAGER();
         void proc();
-        void backToMenu();
         class GAME_STATE* state;
         class GAME_STATE* nextState;
-        class GAME* game;
         class PLAYER* player;
         class UNKO* unko;
+        class GAME* game;
     };
 
 }

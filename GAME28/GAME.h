@@ -3,10 +3,9 @@
 
 namespace GAME28 { 
 
-	class GAME : 
-		public STATE {
+	class GAME : public MAIN::STATE {
 	public:
-		GAME(class MANAGER* manager);
+		GAME(class MAIN::MANAGER* manager);
 		~GAME();
 		void create();
 		void destroy();

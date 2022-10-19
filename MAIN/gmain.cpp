@@ -3,9 +3,7 @@
 
 void gmain() {
 	window(1920, 1080, full);
-
-	MANAGER manager;
-
+	MAIN::MANAGER manager;
 	while (msgProc()) {
 		manager.proc();
 	}

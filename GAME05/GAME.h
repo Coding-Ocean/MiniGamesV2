@@ -3,9 +3,9 @@
 
 namespace GAME05 { //自分でなにかファイルを追加したらincludeの後にこの行を追加すること。　ファイルの最後に“ } ”も忘れずに！
 
-	class GAME : public STATE {
+	class GAME : public MAIN::STATE {
 	public: 
-		GAME(class MANAGER* manager);
+		GAME(class MAIN::MANAGER* manager);
 		~GAME();
 		void create(); 
 		void destroy();

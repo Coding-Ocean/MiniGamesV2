@@ -5,7 +5,7 @@
 #include "GAME.h"
 namespace GAME13 { //自分でなにかファイルを追加したらincludeの後にこの行を追加すること。　ファイルの最後に“ } ”も忘れずに！
 
-	GAME::GAME(MANAGER* manager) :STATE(manager) {}
+	GAME::GAME(MAIN::MANAGER* manager) :STATE(manager) {}
 	GAME::~GAME() {}
 
 	void GAME::create()
@@ -58,7 +58,7 @@ namespace GAME13 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 			manager->fade->fadeOutTrigger();
 			if (manager->fade->fadeOutEndFlag()) {
 				
-				manager->nextState = new MENU(manager);
+				manager->nextState = new MENU::MENU(manager);
 			}
 		}
 	}

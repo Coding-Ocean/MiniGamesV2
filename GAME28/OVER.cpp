@@ -1,5 +1,6 @@
 #include"../libOne/inc/graphic.h"
 #include"../libOne/inc/input.h"
+#include"GAME.h"
 #include"GAME_MANAGER.h"
 #include"PLAYER.h"
 #include"UNKO.h"
@@ -31,7 +32,7 @@ namespace GAME28 {
 		}
 
 		if (isTrigger(KEY_ENTER)) {
-			manager->backToMenu();
+			manager->game->backToMenu();
 		}
 	}
 
