@@ -13,26 +13,25 @@ namespace MAIN {
         FILE* fp = 0;
         fopen_s(&fp, "assets/MANAGER/data.txt", "rb");
         if (fp) {
-            fread(clearFlags, 1, 30, fp);
-            fread(&selectIdx, 1, 1, fp);
+            fread(ClearFlags, 1, 30, fp);
+            fread(&SelectIdx, 1, 1, fp);
             fclose(fp);
         }
         else {
             for (int i = 0; i < 30; i++) {
-                clearFlags[i] = 0;
-                selectIdx = 0;
+                ClearFlags[i] = 0;
             }
+            SelectIdx = 0;
         }
 
         //フェードイン、フェードアウト制御クラス
-        fade = new FADE;
+        Fade = new FADE;
 
         //-----------------------------------------------------------------------------------
         //しょっぱなのステートをセット
         //-----------------------------------------------------------------------------------
-        state = new MENU::MENU(this);
-        state->create();
-        nextState = state;
+        State = NextState = new MENU::MENU(this);
+        State->create();
     }
 
     MANAGER::~MANAGER() {
@@ -40,22 +39,30 @@ namespace MAIN {
         FILE* fp = 0;
         fopen_s(&fp, "assets/MANAGER/data.txt", "wb");
         if (fp) {
-            fwrite(clearFlags, 1, 30, fp);
-            fwrite(&selectIdx, 1, 1, fp);
+            fwrite(ClearFlags, 1, 30, fp);
+            fwrite(&SelectIdx, 1, 1, fp);
             fclose(fp);
         }
-        state->destroy();
-        delete state;
-        delete fade;
+        State->destroy();
+        delete State;
+        delete Fade;
     }
 
     void MANAGER::proc() {
-        state->proc();
-        if (state != nextState) {
-            state->destroy();
-            delete state;
-            state = nextState;
-            state->create();
+        State->proc();
+        if (State != NextState) {
+            State->destroy();
+            delete State;
+            State = NextState;
+            State->create();
+        }
+    }
+
+    void MANAGER::backToMenu()
+    {
+        Fade->fadeOutTrigger();
+        if (Fade->fadeOutEndFlag()) {
+            NextState = new MENU::MENU(this);
         }
     }
 

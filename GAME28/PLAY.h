@@ -1,18 +1,19 @@
 #pragma once
-#include"GAME_STATE.h"
+#include"STATE.h"
 namespace GAME28 {
 
     class PLAY :
-        public GAME_STATE
+        public STATE
     {
     public:
-        PLAY(class GAME_MANAGER*);
+        PLAY(class MANAGER*);
         ~PLAY();
         void create();
         void destroy();
         void proc();
     private:
-        void DrawText();
+        void DrawTextInfo();
+        void NextState();
     };
 
 }

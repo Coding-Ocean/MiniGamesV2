@@ -19,7 +19,7 @@ namespace GAME28 {
 
 	void PLAYER::draw()
 	{
-		fill(255);
+		fill(255,255,0);
 		circle(Px, Py, 200);
 	}
 

@@ -134,8 +134,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GAME.h" />
-    <ClInclude Include="GAME_MANAGER.h" />
-    <ClInclude Include="GAME_STATE.h" />
+    <ClInclude Include="MANAGER.h" />
+    <ClInclude Include="STATE.h" />
     <ClInclude Include="OVER.h" />
     <ClInclude Include="PLAY.h" />
     <ClInclude Include="PLAYER.h" />
@@ -144,7 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GAME.cpp" />
-    <ClCompile Include="GAME_MANAGER.cpp" />
+    <ClCompile Include="MANAGER.cpp" />
     <ClCompile Include="OVER.cpp" />
     <ClCompile Include="PLAY.cpp" />
     <ClCompile Include="PLAYER.cpp" />

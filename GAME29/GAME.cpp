@@ -14,7 +14,7 @@ namespace GAME29 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 		Init();
 		State = TITLE;
 		//フェードイン
-		manager->fade->fadeInTrigger();
+		Fade()->fadeInTrigger();
 	}
 
 	void GAME::destroy()
@@ -123,12 +123,9 @@ namespace GAME29 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 
 	void GAME::BackToMenu()
 	{
-		manager->fade->draw();
+		Fade()->draw();
 		if (BackToMenuFlag == 1) {
-			manager->fade->fadeOutTrigger();
-			if (manager->fade->fadeOutEndFlag()) {
-				manager->nextState = new MENU::MENU(manager);
-			}
+			Manager()->backToMenu();
 		}
 	}
 

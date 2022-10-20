@@ -1,17 +1,18 @@
 #include"../libOne/inc/graphic.h"
 #include"../libOne/inc/input.h"
 #include"GAME.h"
-#include"GAME_MANAGER.h"
+#include"MANAGER.h"
 #include"PLAYER.h"
 #include"UNKO.h"
 #include"PLAY.h"
 #include "OVER.h"
 namespace GAME28 {
-	OVER::OVER(class GAME_MANAGER* manager):GAME_STATE(manager) {}
+	OVER::OVER(class MANAGER* manager):STATE(manager) {}
 	OVER::~OVER() {}
 
 	void OVER::create()
 	{
+		ToNextState = false;
 	}
 
 	void OVER::destroy()
@@ -20,23 +21,17 @@ namespace GAME28 {
 
 	void OVER::proc()
 	{
-		manager->unko->update();
+		Manager()->unko()->update();
 
 		clear(200);
-		manager->player->draw();
-		manager->unko->draw();
-		DrawText();
+		Manager()->player()->draw();
+		Manager()->unko()->draw();
+		DrawTextInfo();
 
-		if (isTrigger(KEY_SPACE)) {
-			manager->nextState = new PLAY(manager);
-		}
-
-		if (isTrigger(KEY_ENTER)) {
-			manager->game->backToMenu();
-		}
+		NextState();
 	}
 
-	void OVER::DrawText()
+	void OVER::DrawTextInfo()
 	{
 		fill(0);
 		textMode(TOP);
@@ -45,6 +40,22 @@ namespace GAME28 {
 		textSize(50);
 		text("Push space key to replay", 0, 100);
 		text("Push enter key to return menu", 0, 150);
+	}
+
+	void OVER::NextState()
+	{
+		if (isTrigger(KEY_SPACE)) {
+			ToNextState = true;
+		}
+		if (ToNextState) {
+			if (Game()->fadeOut()) {
+				Manager()->setNextState(new PLAY(Manager()));
+			}
+		}
+
+		if (isTrigger(KEY_ENTER)) {
+			Manager()->game()->backToMenu();
+		}
 	}
 
 }

@@ -3,10 +3,10 @@
   <ItemGroup>
     <ClInclude Include="PLAYER.h" />
     <ClInclude Include="UNKO.h" />
-    <ClInclude Include="GAME_MANAGER.h">
+    <ClInclude Include="MANAGER.h">
       <Filter>STATE</Filter>
     </ClInclude>
-    <ClInclude Include="GAME_STATE.h">
+    <ClInclude Include="STATE.h">
       <Filter>STATE</Filter>
     </ClInclude>
     <ClInclude Include="OVER.h">
@@ -25,7 +25,7 @@
   <ItemGroup>
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="UNKO.cpp" />
-    <ClCompile Include="GAME_MANAGER.cpp">
+    <ClCompile Include="MANAGER.cpp">
       <Filter>STATE</Filter>
     </ClCompile>
     <ClCompile Include="OVER.cpp">

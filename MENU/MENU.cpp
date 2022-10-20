@@ -83,7 +83,7 @@ namespace MENU {
         }
 
         //フェードインスタート
-        manager->fade->fadeInTrigger();
+        Fade()->fadeInTrigger();
     }
 
     void MENU::destroy()
@@ -92,7 +92,7 @@ namespace MENU {
     }
 
     void MENU::proc() {
-        char& selectIdx = manager->selectIdx; //名前を短くする
+        char selectIdx = Manager()->selectIdx(); //名前を短くする
 
         //WASDキー、または、矢印キーでゲームを選択する
         if (isTrigger(KEY_D) || isTrigger(KEY_RIGHT)) {
@@ -135,9 +135,11 @@ namespace MENU {
             int tate = int((mouseY - OfstY) / RectHeight);
             selectIdx = yoko + tate * Yoko;
             if (isTrigger(MOUSE_LBUTTON)) {
-                manager->fade->fadeOutTrigger();
+                Manager()->backToMenu();
             }
         }
+        //Managerに戻しておく
+        Manager()->setSelectIdx(selectIdx);
 
         //メニュータイル表示。選択されているところは明るく
         clear(0, 0, 0);
@@ -170,50 +172,50 @@ namespace MENU {
                     text(Titles[k].lines[l].c_str(), px + 10, py + 10 + (RectWidth / 10) * l);
                 }
                 //クリアチェック画像
-                if (manager->clearFlags[k]) {
+                if (Manager()->clearFlags(k)) {
                     image(ClearImg, px, py);
                 }
             }
         }
 
-        manager->fade->draw();
+        Fade()->draw();
 
         //選択されたゲームを呼び出す
         if (isTrigger(KEY_ENTER)) {
-            manager->fade->fadeOutTrigger();
+            Fade()->fadeOutTrigger();
         }
-        if (manager->fade->fadeOutEndFlag()) {
+        if (Fade()->fadeOutEndFlag()) {
             switch (selectIdx) {
-            case  0: manager->nextState = new GAME00::GAME(manager); break;
-            case  1: manager->nextState = new GAME01::GAME(manager); break;
-            case  2: manager->nextState = new GAME02::GAME(manager); break;
-            case  3: manager->nextState = new GAME03::GAME(manager); break;
-            case  4: manager->nextState = new GAME04::GAME(manager); break;
-            case  5: manager->nextState = new GAME05::GAME(manager); break;
-            case  6: manager->nextState = new GAME06::GAME(manager); break;
-            case  7: manager->nextState = new GAME07::GAME(manager); break;
-            case  8: manager->nextState = new GAME08::GAME(manager); break;
-            case  9: manager->nextState = new GAME09::GAME(manager); break;
-            case 10: manager->nextState = new GAME10::GAME(manager); break;
-            case 11: manager->nextState = new GAME11::GAME(manager); break;
-            case 12: manager->nextState = new GAME12::GAME(manager); break;
-            case 13: manager->nextState = new GAME13::GAME(manager); break;
-            case 14: manager->nextState = new GAME14::GAME(manager); break;
-            case 15: manager->nextState = new GAME15::GAME(manager); break;
-            case 16: manager->nextState = new GAME16::GAME(manager); break;
-            case 17: manager->nextState = new GAME17::GAME(manager); break;
-            case 18: manager->nextState = new GAME18::GAME(manager); break;
-            case 19: manager->nextState = new GAME19::GAME(manager); break;
-            case 20: manager->nextState = new GAME20::GAME(manager); break;
-            case 21: manager->nextState = new GAME21::GAME(manager); break;
-            case 22: manager->nextState = new GAME22::GAME(manager); break;
-            case 23: manager->nextState = new GAME23::GAME(manager); break;
-            case 24: manager->nextState = new GAME24::GAME(manager); break;
-            case 25: manager->nextState = new GAME25::GAME(manager); break;
-            case 26: manager->nextState = new GAME26::GAME(manager); break;
-            case 27: manager->nextState = new GAME27::GAME(manager); break;
-            case 28: manager->nextState = new GAME28::GAME(manager); break;
-            case 29: manager->nextState = new GAME29::GAME(manager); break;
+            case  0: Manager()->setNextState(new GAME00::GAME(Manager())); break;
+            case  1: Manager()->setNextState(new GAME01::GAME(Manager())); break;
+            case  2: Manager()->setNextState(new GAME02::GAME(Manager())); break;
+            case  3: Manager()->setNextState(new GAME03::GAME(Manager())); break;
+            case  4: Manager()->setNextState(new GAME04::GAME(Manager())); break;
+            case  5: Manager()->setNextState(new GAME05::GAME(Manager())); break;
+            case  6: Manager()->setNextState(new GAME06::GAME(Manager())); break;
+            case  7: Manager()->setNextState(new GAME07::GAME(Manager())); break;
+            case  8: Manager()->setNextState(new GAME08::GAME(Manager())); break;
+            case  9: Manager()->setNextState(new GAME09::GAME(Manager())); break;
+            case 10: Manager()->setNextState(new GAME10::GAME(Manager())); break;
+            case 11: Manager()->setNextState(new GAME11::GAME(Manager())); break;
+            case 12: Manager()->setNextState(new GAME12::GAME(Manager())); break;
+            case 13: Manager()->setNextState(new GAME13::GAME(Manager())); break;
+            case 14: Manager()->setNextState(new GAME14::GAME(Manager())); break;
+            case 15: Manager()->setNextState(new GAME15::GAME(Manager())); break;
+            case 16: Manager()->setNextState(new GAME16::GAME(Manager())); break;
+            case 17: Manager()->setNextState(new GAME17::GAME(Manager())); break;
+            case 18: Manager()->setNextState(new GAME18::GAME(Manager())); break;
+            case 19: Manager()->setNextState(new GAME19::GAME(Manager())); break;
+            case 20: Manager()->setNextState(new GAME20::GAME(Manager())); break;
+            case 21: Manager()->setNextState(new GAME21::GAME(Manager())); break;
+            case 22: Manager()->setNextState(new GAME22::GAME(Manager())); break;
+            case 23: Manager()->setNextState(new GAME23::GAME(Manager())); break;
+            case 24: Manager()->setNextState(new GAME24::GAME(Manager())); break;
+            case 25: Manager()->setNextState(new GAME25::GAME(Manager())); break;
+            case 26: Manager()->setNextState(new GAME26::GAME(Manager())); break;
+            case 27: Manager()->setNextState(new GAME27::GAME(Manager())); break;
+            case 28: Manager()->setNextState(new GAME28::GAME(Manager())); break;
+            case 29: Manager()->setNextState(new GAME29::GAME(Manager())); break;
             }
         }
     }

@@ -10,9 +10,12 @@ namespace GAME28 {
 		void create();
 		void destroy();
 		void proc();
+		//このGAME内の各ステートで使用
+		void fadeIn();
+		bool fadeOut();
 		void backToMenu();
 	private:
-		class GAME_MANAGER* Manager;
+		class MANAGER* Manager;
 		int BackToMenuFlag = 0;
 	};
 

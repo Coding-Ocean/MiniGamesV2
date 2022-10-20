@@ -2,19 +2,17 @@
 #include "../MAIN/MANAGER.h"
 #include "../MAIN/FADE.h"
 #include "../MENU/MENU.h"
-#include "GAME_MANAGER.h"
+#include "MANAGER.h"
 #include "TITLE.h"
 #include "GAME.h"
-namespace GAME28 { //自分でなにかファイルを追加したらincludeの後にこの行を追加すること。　ファイルの最後に“ } ”も忘れずに！
+namespace GAME28 { 
 
-	GAME::GAME(MAIN::MANAGER* manager) :STATE(manager) {}
+	GAME::GAME(MAIN::MANAGER* manager) :MAIN::STATE(manager) {}
 	GAME::~GAME() {}
 
 	void GAME::create()
 	{
-		Manager = new GAME_MANAGER(this);
-		//フェードイン（ここはいじらないでよい）
-		manager->fade->fadeInTrigger();
+		Manager = new GAME28::MANAGER(this);
 	}
 
 	void GAME::destroy()
@@ -26,13 +24,27 @@ namespace GAME28 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 	{
 		Manager->proc();
 
-		manager->fade->draw();
+		MAIN::STATE::Fade()->draw();
+
 		if (BackToMenuFlag == 1) {
-			manager->fade->fadeOutTrigger();
-			if (manager->fade->fadeOutEndFlag()) {
-				manager->nextState = new MENU::MENU(manager);
-			}
+			MAIN::STATE::Manager()->backToMenu();
 		}
+	}
+
+	//以下このGAME内のステートから呼び出される------------------------------
+
+	void GAME::fadeIn()
+	{
+		MAIN::STATE::Fade()->fadeInTrigger();
+	}
+
+	bool GAME::fadeOut()
+	{
+		MAIN::STATE::Fade()->fadeOutTrigger();
+		if (MAIN::STATE::Fade()->fadeOutEndFlag())
+			return true;
+		else
+			return false;
 	}
 
 	void GAME::backToMenu()

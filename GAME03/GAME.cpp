@@ -18,7 +18,7 @@ namespace GAME03 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 		Vx = 20;
 
 		//フェードイン（ここはいじらないでよい）
-		manager->fade->fadeInTrigger();
+		Fade()->fadeInTrigger();
 	}
 
 	void GAME::destroy()
@@ -52,13 +52,9 @@ namespace GAME03 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 		}
 
 		//メニューに戻る (基本的に以下はいじらなくてよい)
-		manager->fade->draw();
+		Fade()->draw();
 		if (BackToMenuFlag == 1) {
-			manager->fade->fadeOutTrigger();
-			if (manager->fade->fadeOutEndFlag()) {
-				
-				manager->nextState = new MENU::MENU(manager);
-			}
+			Manager()->backToMenu();
 		}
 	}
 }
