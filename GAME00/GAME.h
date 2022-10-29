@@ -1,27 +1,40 @@
 #pragma once
-#include"../MAIN/STATE.h"
+#include <vector>
+#include "../MAIN/STATE.h"
 
-namespace GAME00 { //自分でなにかファイルを追加したらincludeの後にこの行を追加すること。　ファイルの最後に“ } ”も忘れずに！
-
-	class GAME : public MAIN::STATE {
-	public:
+namespace GAME00 
+{
+	class GAME : 
+		public MAIN::STATE 
+	{
+	public: 
 		GAME(class MAIN::MANAGER* manager);
 		~GAME();
-		void create();
+		void create(); 
 		void destroy();
 		void proc();
+		void gameSet() { Playing = false; }
+		class ACTOR* stage() { return Stage; }
+		class ACTOR* player(){ return Player; };
+		class ACTOR* ai() { return Ai; };
+		class ACTOR* ball() { return Ball; };
+		int playSnd;
+		int aiSnd;
+		int wallSnd;
+		int loseSnd;
+		int winSnd;
+		int pointSnd;
 	private:
-		//ここに必要な記憶場所を用意する
-		//画像表示用
-		int Img;
-		//円表示用
-		float Diameter;//直径
-		float Px;
-		float Py;
-		float Vx;
-
-		//以下はいじらないでよい
+		void Init();
+		std::vector<ACTOR*>Actors;
+		class ACTOR* Stage=0;
+		class ACTOR* Player=0;
+		class ACTOR* Ai=0;
+		class ACTOR* Ball=0;
+		class ACTOR* Score=0;
 		int BackToMenuFlag = 0;
+		bool Playing = true;
 	};
 
 }
+
