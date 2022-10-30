@@ -2,8 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="GAME.cpp" />
+    <ClCompile Include="STAGE.cpp" />
+    <ClCompile Include="FOOD.cpp" />
+    <ClCompile Include="SNAKE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GAME.h" />
+    <ClInclude Include="ACTOR.h" />
+    <ClInclude Include="STAGE.h" />
+    <ClInclude Include="FOOD.h" />
+    <ClInclude Include="SNAKE.h" />
   </ItemGroup>
 </Project>

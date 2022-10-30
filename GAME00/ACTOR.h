@@ -9,7 +9,7 @@ namespace GAME00
 		virtual void init(){}
 		virtual void update(){}
 		virtual void draw(){}
-		//getter setter
+		//getter
 		class GAME* game() { return Game; }
 		float px() { return Px; }
 		float py() { return Py; }
@@ -19,6 +19,8 @@ namespace GAME00
 		float r() { return W; }
 		float w() { return W; }
 		float h() { return H; }
+	protected:
+		//setter
 		void setPx(float px) { Px = px; }
 		void setPy(float py) { Py = py; }
 		void setSp(float sp) { Sp = sp; }
