@@ -133,7 +133,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CELL.h" />
     <ClInclude Include="GAME.h" />
+    <ClInclude Include="STAGE.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GAME.cpp" />
