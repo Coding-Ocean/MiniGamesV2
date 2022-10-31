@@ -26,14 +26,10 @@ namespace GAME02 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 		clear(234, 4, 126);
 		Stage.update();
 		Stage.draw();
+		Fade()->draw();
 
 		//メニューに戻る
-		if (isTrigger(KEY_ENTER)) {
-			BackToMenuFlag = 1;
-		}
-		Fade()->draw();
-		if (BackToMenuFlag == 1) {
-			Manager()->backToMenu();
-		}
+		if (isTrigger(KEY_ENTER)) {BackToMenuFlag = 1;}
+		if (BackToMenuFlag == 1) {Manager()->backToMenu();}
 	}
 }

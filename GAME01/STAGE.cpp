@@ -19,6 +19,7 @@ namespace GAME01
 		rectMode(CORNER);
 		fill(0);
 		stroke(0);
+		strokeWeight(Scale * 0.2f);
 		rect(Px, Py, W, H);
 		DrawScore();
 		if (game()->gameOver()) {

@@ -13,8 +13,8 @@ namespace GAME02
 
 		void init() {
 			Opened = false;
-			Bom = (random() % 10 < 2 );
 			MayBeBom = false;
+			Bom = (random() % 10 < 2 );
 		}
 
 		void draw() {
@@ -28,24 +28,27 @@ namespace GAME02
 				if (Bom) {
 					fill(252, 231, 0);
 					rect(px, py, scale, scale);
-					fill(0, 0, 0);
+					
+					stroke(128,64,0);
+					strokeWeight(Scale * 0.04f);
+					line(px, py, px + Scale * 0.25f, py - Scale * 0.25f);
+
 					stroke(0);
 					strokeWeight(Scale * 0.5f);
 					point(px, py);
-					strokeWeight(Scale * 0.06f);
-					line(px, py, px + 20, py - 20);
+					
 					stroke(255, 0, 0);
-					strokeWeight(Scale*0.1f);
-					point(px + 22, py - 22);
+					strokeWeight(Scale * 0.08f);
+					point(px + Scale * 0.25f, py - Scale * 0.25f);
 				}
 				else {
 					fill(0, 245, 255);
 					rect(px, py, scale, scale);
-					if (NumAdjacentBoms) {
+					if (NumNeighborBoms) {
 						fill(0, 0, 60);
 						textSize(Scale * 0.3f);
 						textMode(BCENTER);
-						text(NumAdjacentBoms, px, py);
+						text(NumNeighborBoms, px, py);
 					}
 				}
 			}
@@ -58,17 +61,17 @@ namespace GAME02
 				rect(px,py, scale, scale);
 			}
 		}
-		bool bom() { return Bom; }
 		void open() { Opened = true; }
-		bool close() { return !Opened; }
 		void mayBeBom() { MayBeBom = true; }
-		void setNumAdjacentBoms(int num) { NumAdjacentBoms = num; }
-		int numAdjacentBoms() { return NumAdjacentBoms; }
+		bool notYetOpen() { return !Opened; }
+		bool bom() { return Bom; }
+		void setNumNeighborBoms(int num) { NumNeighborBoms = num; }
+		int numNeighborBoms() { return NumNeighborBoms; }
 	private:
 		float Px=0, Py=0, Scale=0;
-		bool Bom = false;
 		bool Opened = false;
 		bool MayBeBom = false;
-		int NumAdjacentBoms = 0;
+		bool Bom = false;
+		int NumNeighborBoms = 0;
 	};
 }
