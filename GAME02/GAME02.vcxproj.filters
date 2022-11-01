@@ -3,7 +3,7 @@
   <ItemGroup>
     <ClInclude Include="GAME.h" />
     <ClInclude Include="CELL.h" />
-    <ClInclude Include="STAGE.h" />
+    <ClInclude Include="FIELD.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GAME.cpp" />

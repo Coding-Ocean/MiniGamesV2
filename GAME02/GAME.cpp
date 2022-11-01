@@ -10,24 +10,24 @@ namespace GAME02 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 
 	void GAME::create()
 	{
-		Stage.create();
+		Field.create();
 
-		//フェードイン（ここはいじらないでよい）
 		Fade()->fadeInTrigger();
 	}
 
 	void GAME::destroy()
 	{
-		Stage.destroy();
+		Field.destroy();
 	}
 
 	void GAME::proc()
 	{
 		clear(234, 4, 126);
-		Stage.update();
-		Stage.draw();
-		Fade()->draw();
+		Field.update();
+		Field.draw();
 
+		//フェード処理
+		Fade()->draw();
 		//メニューに戻る
 		if (isTrigger(KEY_ENTER)) {BackToMenuFlag = 1;}
 		if (BackToMenuFlag == 1) {Manager()->backToMenu();}

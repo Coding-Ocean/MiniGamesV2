@@ -1,6 +1,6 @@
 #pragma once
 #include "../libOne/inc/graphic.h"
-#include "STAGE.h"
+#include "FIELD.h"
 namespace GAME02
 {
 	class CELL {
@@ -12,9 +12,10 @@ namespace GAME02
 		}
 
 		void init() {
-			Opened = false;
+			Revealed = false;
 			MayBeBom = false;
 			Bom = (random() % 10 < 2 );
+			NumNeighborBoms=0;
 		}
 
 		void draw() {
@@ -24,7 +25,7 @@ namespace GAME02
 			rectMode(CENTER);
 			stroke(255, 109, 40);
 			strokeWeight(Scale * 0.15f);
-			if (Opened) {
+			if (Revealed) {
 				if (Bom) {
 					fill(252, 231, 0);
 					rect(px, py, scale, scale);
@@ -61,15 +62,15 @@ namespace GAME02
 				rect(px,py, scale, scale);
 			}
 		}
-		void open() { Opened = true; }
+		void reveal() { Revealed = true; }
 		void mayBeBom() { MayBeBom = true; }
-		bool notYetOpen() { return !Opened; }
+		bool revealed() { return Revealed; }
 		bool bom() { return Bom; }
-		void setNumNeighborBoms(int num) { NumNeighborBoms = num; }
+		void countNeighborBoms() { NumNeighborBoms++; }
 		int numNeighborBoms() { return NumNeighborBoms; }
 	private:
 		float Px=0, Py=0, Scale=0;
-		bool Opened = false;
+		bool Revealed = false;
 		bool MayBeBom = false;
 		bool Bom = false;
 		int NumNeighborBoms = 0;

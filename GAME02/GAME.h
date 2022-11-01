@@ -1,6 +1,6 @@
 #pragma once
 #include"../MAIN/STATE.h"
-#include"STAGE.h"
+#include"FIELD.h"
 namespace GAME02 { //自分でなにかファイルを追加したらincludeの後にこの行を追加すること。　ファイルの最後に“ } ”も忘れずに！
 
 	class GAME : public MAIN::STATE {
@@ -12,7 +12,7 @@ namespace GAME02 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 		void proc();
 	private:
 		//ここに必要な記憶場所を用意する
-		STAGE Stage;
+		FIELD Field;
 		//以下はいじらないでよい
 		int BackToMenuFlag=0;
 	};
