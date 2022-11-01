@@ -6,28 +6,6 @@
 namespace GAME02
 {
 	class FIELD {
-		//1つのセルの大きさ
-		float Scale = 0;
-		//ステージの幅と高さ
-		float W = 0;
-		float H = 0;
-		//ステージの右上の座標
-		float OfstX = 0;
-		float OfstY = 0;
-		//セル2次元配列
-		class CELL** Cell = 0;
-		int Cols = 0;
-		int Rows = 0;
-		//ゲームオーバーフラッグ
-		int GameOver = 0;
-		//ゲームクリア判定に必要な変数
-		int GameClear = 0;
-		int NumCells = 0;
-		int NumRevealed = 0;
-		int NumBoms = 0;
-		//効果音
-		int GameClearSnd = 0;
-		int GameOverSnd = 0;
 	public:
 		void create() {
 			GameClearSnd = loadSound("assets/game02/levelup.wav");
@@ -43,7 +21,7 @@ namespace GAME02
 			Cols = W / Scale;
 			Rows = H / Scale;
 			//2次元配列動的確保
-			Cell = new CELL*[Cols];
+			Cell = new CELL * [Cols];
 			for (int c = 0; c < Cols; c++) {
 				Cell[c] = new CELL[Rows];
 			}
@@ -77,10 +55,8 @@ namespace GAME02
 				return;
 			}
 			//mouseがステージ上にない
-			if (mouseX<OfstX || 
-				mouseY<OfstY ||
-				mouseX>OfstX + Cols * Scale ||
-				mouseY>OfstY + Rows * Scale) {
+			if (mouseX<OfstX ||	mouseY<OfstY ||
+				mouseX>OfstX + W ||	mouseY>OfstY + H) {
 				return;
 			}
 			//mouseがステージ上にある
@@ -112,14 +88,13 @@ namespace GAME02
 				}
 			}
 			if (GameOver) {
-				DrawMessage("You are dead!",45, 255,255,0);
+				DrawMessage("You are dead!", 45, 255, 255, 0);
 			}
 			else if (GameClear) {
 				DrawMessage("You did it!", 45, 0, 255, 255);
 			}
 		}
 	private:
-		//createから呼び出される
 		void Init() {
 			GameOver = 0;
 			GameClear = 0;
@@ -153,7 +128,6 @@ namespace GAME02
 				}
 			}
 		}
-		//updateから呼び出される
 		void Reveal(int c, int r) {
 			if (Cell[c][r].revealed())
 				return;
@@ -177,13 +151,34 @@ namespace GAME02
 				}
 			}
 		}
-		//drawから呼び出される
-		void DrawMessage(const char* msg,float size, float r, float g, float b) {
+		void DrawMessage(const char* msg, float size, float r, float g, float b) {
 			fill(r, g, b);
 			textSize(size * 2);
 			textMode(BOTTOM);
 			float px = OfstX + (W - size * strlen(msg)) / 2;
 			text(msg, px, OfstY);
 		}
+		//1つのセルの大きさ
+		float Scale = 0;
+		//ステージの幅と高さ
+		float W = 0;
+		float H = 0;
+		//ステージの右上の座標
+		float OfstX = 0;
+		float OfstY = 0;
+		//セル2次元配列
+		class CELL** Cell = 0;
+		int Cols = 0;
+		int Rows = 0;
+		//ゲームオーバーフラッグ
+		int GameOver = 0;
+		//ゲームクリア判定に必要な変数
+		int GameClear = 0;
+		int NumCells = 0;
+		int NumRevealed = 0;
+		int NumBoms = 0;
+		//効果音
+		int GameClearSnd = 0;
+		int GameOverSnd = 0;
 	};
 }

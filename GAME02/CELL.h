@@ -10,14 +10,12 @@ namespace GAME02
 			Py = py;
 			Scale = scale;
 		}
-
 		void init() {
 			Revealed = false;
 			MayBeBom = false;
 			Bom = (random() % 10 < 2 );
 			NumNeighborBoms=0;
 		}
-
 		void draw() {
 			float px = Px + Scale / 2;
 			float py = Py + Scale / 2;
