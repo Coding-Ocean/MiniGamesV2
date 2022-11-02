@@ -1,5 +1,6 @@
 #pragma once
 #include "../libOne/inc/graphic.h"
+#include "../libOne/inc/sound.h"
 #include "../libOne/inc/input.h"
 #include "CELL.h"
 

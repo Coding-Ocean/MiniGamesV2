@@ -1,5 +1,6 @@
 #pragma once
 #include "../libOne/inc/graphic.h"
+#include "../libOne/inc/rand.h"
 #include "FIELD.h"
 namespace GAME02
 {
