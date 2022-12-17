@@ -14,11 +14,11 @@ namespace GAME04 {
 		hideCursor();
 		colorMode(HSV, 100);
 		angleMode(DEGREES);
-
+		//画像読み込みなど
 		for (ACTOR* actor : Actors) {
 			actor->create();
 		}
-
+		//データ初期化
 		Init();
 		//フェードイン
 		Fade()->fadeInTrigger();

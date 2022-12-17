@@ -13,6 +13,7 @@ namespace GAME04 {
 	private:
 		void Init();
 		std::vector<class ACTOR*>Actors;
+
 		int BackToMenuFlag=0;
 	};
 
