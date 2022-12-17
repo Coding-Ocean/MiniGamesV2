@@ -23,6 +23,10 @@ namespace GAME04 {
 		Img_d = loadImage("assets\\GAME04\\map_d.png");
 		Img_x = loadImage("assets\\GAME04\\map_x.png");
 		Img_y = loadImage("assets\\GAME04\\map_y.png");
+
+		SndOpenning = loadSound("assets\\GAME04\\s_beginning.wav");
+		SndEat = loadSound("assets\\GAME04\\s_eat.wav");
+		SndClear = loadSound("assets\\GAME04\\s_intermission.wav");
 	}
 
 	void STAGE::destroy()
@@ -50,12 +54,14 @@ namespace GAME04 {
 			}
 			fclose(fp);
 		}
+		playSound(SndOpenning);
 	}
 
 	void STAGE::update()
 	{
 		if (NumFood <= 0) {
 			game()->toClear();
+			playSound(SndClear);
 		}
 	}
 
@@ -143,6 +149,7 @@ namespace GAME04 {
 		int i = c + r * Cols;
 		PowerFoodEaten = 0;
 		if (Map[i] == 'o') {
+			playSound(SndEat);
 			NumFood--;
 			Map[i] = '.';
 		}

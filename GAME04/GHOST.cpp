@@ -76,6 +76,10 @@ namespace GAME04 {
 		ImgEaten[2] = loadImage("assets\\GAME04\\ghost_eaten_d.png");
 		ImgEaten[3] = loadImage("assets\\GAME04\\ghost_eaten_r.png");
 
+		SndFrightened = loadSound("assets\\GAME04\\s_frightened.wav");
+		SndEatGhost = loadSound("assets\\GAME04\\s_eatghost.wav");
+		SndOver = loadSound("assets\\GAME04\\s_over.wav");
+
 		Size = game()->stage()->size();
 		OfstX = game()->stage()->ofstX();
 		OfstY = game()->stage()->ofstY();
@@ -174,6 +178,7 @@ namespace GAME04 {
 			ScatterChaseCnt = 0;
 			FrightenedCnt = 10 * 60;
 			FrightenedFlag = 1;
+			if(No==0)playLoopSound(SndFrightened);
 		}
 		if (FrightenedCnt > 0) {
 			FrightenedCnt--;
@@ -183,6 +188,10 @@ namespace GAME04 {
 					Mode = SCATTER;
 				}
 				ScatterChaseCnt = 0;
+				if (No == 0)stopSound(SndFrightened);
+			}
+			if (!game()->playing()) {
+				if (No == 0)stopSound(SndFrightened);
 			}
 		}
 
@@ -193,6 +202,7 @@ namespace GAME04 {
 					Mode = EATEN;
 					Speed = 10;
 					FrightenedFlag = 0;
+					playSound(SndEatGhost);
 				}
 			}
 			//H‚×‚ç‚ê‚Äƒz[ƒ€‚Ìã‚Ü‚Å–ß‚è’†
@@ -351,6 +361,7 @@ namespace GAME04 {
 		if (FrightenedFlag == 0 && Mode != EATEN && Mode != EATEN_HOME) {
 			if ((Pos - game()->player()->pos()).sqMag() < 30 * 30) {
 				game()->toOver();
+				playSound(SndOver);
 			}
 		}
 	}

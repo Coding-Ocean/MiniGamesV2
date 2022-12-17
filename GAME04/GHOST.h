@@ -50,5 +50,9 @@ namespace GAME04 {
         const int U = 0, L = 1, D = 2, R = 3;
         INT2 DIR[4];
         int DirIdx;
+
+        int SndFrightened;
+        int SndEatGhost;
+        int SndOver;
     };
 }

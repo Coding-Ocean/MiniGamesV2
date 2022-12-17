@@ -28,5 +28,6 @@ namespace GAME04 {
         INT2 Dir;
         float Angle;
         int Speed;
+
     };
 }

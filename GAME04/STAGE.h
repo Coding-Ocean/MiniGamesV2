@@ -47,6 +47,11 @@ namespace GAME04 {
 
         int NumFood;
         int PowerFoodEaten;
+
+        int SndOpenning;
+        int SndEat;
+        int SndClear;
+
     };
 
 }
