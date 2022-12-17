@@ -66,7 +66,7 @@ namespace GAME04 {
 				char d = Map[c + r * Cols];
 				float px = OfstX + Size * c;
 				float py = OfstY + Size * r;
-#if 1			
+#if 0			
 				stroke(0, 0, 40);
 				strokeWeight(2);
 				if (d == '.' || d == 'o' || d == 'p')
@@ -75,7 +75,7 @@ namespace GAME04 {
 					fill(0, 0, 0);
 				rect(px, py, Size, Size);
 #endif
-#if 0
+#if 1
 				if		(d == 'x')image(Img_x, px, py);
 				else if (d == 'y')image(Img_y, px, py);
 				else if (d == 'a')image(Img_a, px, py);

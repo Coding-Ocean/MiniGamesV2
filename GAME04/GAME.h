@@ -14,11 +14,15 @@ namespace GAME04 {
 		void toOver() { State = OVER; }
 		void toClear() { State = CLEAR; }
 		int playing() { return State == PLAY; }
+
+		class STAGE* stage() { return Stage; }
+		class PLAYER* player() { return Player; }
 	private:
 		void Init();
 		
 		std::vector<class ACTOR*>Actors;
 		class STAGE* Stage = nullptr;
+		class PLAYER* Player = nullptr;
 
 		const int PLAY = 0;
 		const int OVER = 1;

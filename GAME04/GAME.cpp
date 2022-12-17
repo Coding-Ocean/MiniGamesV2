@@ -3,6 +3,7 @@
 #include "../MAIN/FADE.h"
 #include "../MENU/MENU.h"
 #include "STAGE.h"
+#include "PLAYER.h"
 #include "GAME.h"
 namespace GAME04 { 
 
@@ -15,6 +16,7 @@ namespace GAME04 {
 
 		//ActorîzóÒÇ÷ìoò^
 		Actors.push_back(Stage = new STAGE(this));
+		Actors.push_back(Player = new PLAYER(this));
 
 		//âÊëúì«Ç›çûÇ›Ç»Ç«
 		for (ACTOR* actor : Actors) {
