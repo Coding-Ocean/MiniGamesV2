@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ACTOR.h" />
     <ClInclude Include="GAME.h" />
   </ItemGroup>
   <ItemGroup>

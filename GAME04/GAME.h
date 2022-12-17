@@ -1,7 +1,7 @@
 #pragma once
 #include"../MAIN/STATE.h"
-
-namespace GAME04 { //自分でなにかファイルを追加したらincludeの後にこの行を追加すること。　ファイルの最後に“ } ”も忘れずに！
+#include<vector>
+namespace GAME04 { 
 
 	class GAME : public MAIN::STATE {
 	public: 
@@ -11,16 +11,8 @@ namespace GAME04 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 		void destroy();
 		void proc();
 	private:
-		//ここに必要な記憶場所を用意する
-		//画像表示用
-		int Img;
-		//円表示用
-		float Diameter;//直径
-		float Px;
-		float Py;
-		float Vx;
-
-		//以下はいじらないでよい
+		void Init();
+		std::vector<class ACTOR*>Actors;
 		int BackToMenuFlag=0;
 	};
 

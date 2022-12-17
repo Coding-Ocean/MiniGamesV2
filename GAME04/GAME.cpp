@@ -2,60 +2,63 @@
 #include "../MAIN/MANAGER.h"
 #include "../MAIN/FADE.h"
 #include "../MENU/MENU.h"
+#include "ACTOR.h"
 #include "GAME.h"
-namespace GAME04 { //自分でなにかファイルを追加したらincludeの後にこの行を追加すること。　ファイルの最後に“ } ”も忘れずに！
+namespace GAME04 { 
 
 	GAME::GAME(MAIN::MANAGER* manager) :STATE(manager) {}
 	GAME::~GAME() {}
 
 	void GAME::create()
 	{
-		Img = loadImage("assets/GAME04/unkoWhite.png");
+		hideCursor();
+		colorMode(HSV, 100);
+		angleMode(DEGREES);
 
-		Diameter = 200;
-		Px = -100;
-		Py = height / 2;
-		Vx = 20;
+		for (ACTOR* actor : Actors) {
+			actor->create();
+		}
 
-		//フェードイン（ここはいじらないでよい）
+		Init();
+		//フェードイン
 		Fade()->fadeInTrigger();
 	}
 
 	void GAME::destroy()
 	{
+		for (ACTOR* actor : Actors) {
+			actor->destroy();
+			delete actor;
+		}
+		showCursor();
+	}
 
+	void GAME::Init()
+	{
+		for (ACTOR* actor : Actors) {
+			actor->init();
+		}
 	}
 
 	void GAME::proc()
 	{
+		//リセット
+		if (isTrigger(KEY_R)) {
+			Init();
+		}
 		//更新
-		Px += Vx;
-
+		for (ACTOR* actor : Actors) {
+			actor->update();
+		}
 		//描画
 		clear(200);
-		circle(Px, Py, Diameter);
-		
-		//円が右に消えたらゲームオーバーとする
-		if (Px > 2100) {
-			//うんこ表示
-			rectMode(CENTER);
-			image(Img, width / 2, height / 2);
-			//文字表示
-			fill(255, 0, 0);
-			textSize(200);
-			text("Game Over", 500, 100);
-			textSize(60);
-			text("Enterでメニューに戻る", 600, 800);
-			//メニューに戻る
-			if (isTrigger(KEY_ENTER)) {
-				BackToMenuFlag = 1;
-			}
+		for (ACTOR* actor : Actors) {
+			actor->draw();
 		}
-
-		//メニューに戻る (基本的に以下はいじらなくてよい)
+		//フェード
 		Fade()->draw();
-		if (BackToMenuFlag == 1) {
-			Manager()->backToMenu();
-		}
+		//メニューに戻る
+		if (isTrigger(KEY_ENTER)) {	BackToMenuFlag = 1;	}
+		if (BackToMenuFlag == 1) { Manager()->backToMenu();	}
 	}
 }
