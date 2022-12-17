@@ -2,7 +2,7 @@
 #include "../MAIN/MANAGER.h"
 #include "../MAIN/FADE.h"
 #include "../MENU/MENU.h"
-#include "ACTOR.h"
+#include "STAGE.h"
 #include "GAME.h"
 namespace GAME04 { 
 
@@ -12,8 +12,10 @@ namespace GAME04 {
 	void GAME::create()
 	{
 		hideCursor();
-		colorMode(HSV, 100);
-		angleMode(DEGREES);
+
+		//Actor”z—ñ‚Ö“o˜^
+		Actors.push_back(Stage = new STAGE(this));
+
 		//‰æ‘œ“Ç‚İ‚İ‚È‚Ç
 		for (ACTOR* actor : Actors) {
 			actor->create();
@@ -46,12 +48,14 @@ namespace GAME04 {
 		if (isTrigger(KEY_R)) {
 			Init();
 		}
+		colorMode(HSV, 100);
+		angleMode(DEGREES);
 		//XV
 		for (ACTOR* actor : Actors) {
 			actor->update();
 		}
 		//•`‰æ
-		clear(200);
+		clear(0,0,0);
 		for (ACTOR* actor : Actors) {
 			actor->draw();
 		}
