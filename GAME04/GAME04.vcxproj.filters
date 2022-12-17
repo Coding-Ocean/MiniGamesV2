@@ -6,11 +6,13 @@
     <ClInclude Include="STAGE.h" />
     <ClInclude Include="PLAYER.h" />
     <ClInclude Include="INT2.h" />
+    <ClInclude Include="GHOST.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GAME.cpp" />
     <ClCompile Include="STAGE.cpp" />
     <ClCompile Include="INT2.cpp" />
     <ClCompile Include="PLAYER.cpp" />
+    <ClCompile Include="GHOST.cpp" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 #include "../libOne/inc/libOne.h"
-#include"GAME.h"
-#include"STAGE.h"
+#include "GAME.h"
+#include "STAGE.h"
 #include "PLAYER.h"
 namespace GAME04 {
 

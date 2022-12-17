@@ -4,6 +4,7 @@
 #include "../MENU/MENU.h"
 #include "STAGE.h"
 #include "PLAYER.h"
+#include "GHOST.h"
 #include "GAME.h"
 namespace GAME04 { 
 
@@ -17,6 +18,10 @@ namespace GAME04 {
 		//Actor配列へ登録
 		Actors.push_back(Stage = new STAGE(this));
 		Actors.push_back(Player = new PLAYER(this));
+		Actors.push_back(RedGhost = new GHOST(0, this));
+		Actors.push_back(new GHOST(1, this));
+		Actors.push_back(new GHOST(2, this));
+		Actors.push_back(new GHOST(3, this));
 
 		//画像読み込みなど
 		for (ACTOR* actor : Actors) {
@@ -42,6 +47,7 @@ namespace GAME04 {
 		for (ACTOR* actor : Actors) {
 			actor->init();
 		}
+		State = PLAY;
 	}
 
 	void GAME::proc()
@@ -53,13 +59,19 @@ namespace GAME04 {
 		colorMode(HSV, 100);
 		angleMode(DEGREES);
 		//更新
-		for (ACTOR* actor : Actors) {
-			actor->update();
+		if (State == PLAY) {
+			for (ACTOR* actor : Actors) {
+				actor->update();
+			}
 		}
 		//描画
 		clear(0,0,0);
 		for (ACTOR* actor : Actors) {
 			actor->draw();
+		}
+		Stage->drawWarpZone();
+		if (State == CLEAR) {
+			Stage->drawStageClear();
 		}
 		//フェード
 		Fade()->draw();

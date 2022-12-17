@@ -135,12 +135,14 @@
   <ItemGroup>
     <ClInclude Include="ACTOR.h" />
     <ClInclude Include="GAME.h" />
+    <ClInclude Include="GHOST.h" />
     <ClInclude Include="INT2.h" />
     <ClInclude Include="PLAYER.h" />
     <ClInclude Include="STAGE.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GAME.cpp" />
+    <ClCompile Include="GHOST.cpp" />
     <ClCompile Include="INT2.cpp" />
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="STAGE.cpp" />

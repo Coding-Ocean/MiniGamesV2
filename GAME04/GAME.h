@@ -17,12 +17,14 @@ namespace GAME04 {
 
 		class STAGE* stage() { return Stage; }
 		class PLAYER* player() { return Player; }
+		class GHOST* redGhost() { return RedGhost; }
 	private:
 		void Init();
 		
 		std::vector<class ACTOR*>Actors;
 		class STAGE* Stage = nullptr;
 		class PLAYER* Player = nullptr;
+		class GHOST* RedGhost = nullptr;
 
 		const int PLAY = 0;
 		const int OVER = 1;
