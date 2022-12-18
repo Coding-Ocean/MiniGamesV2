@@ -285,39 +285,42 @@ namespace GAME04 {
 		int tx = 0;
 		int ty = 0;
 		if (Mode == SCATTER) {
-			if (No == 0) { tx = 33; ty = 0; }
-			else if (No == 1) { tx = 0; ty = 0; }
-			else if (No == 2) { tx = 1; ty = 29; }
-			else if (No == 3) { tx = 30; ty = 29; }
+			//４隅の縄張りへ分散させる
+			if (No == 0) { tx = 30; ty = 0; }
+			else if (No == 1) { tx = 1; ty = 0; }
+			else if (No == 2) { tx = 3; ty = 32; }
+			else if (No == 3) { tx = 23; ty = 32; }
 		}
 		else if (Mode == CHASE) {
+			tx = game()->player()->pos().x / 30;
+			ty = game()->player()->pos().y / 30;
 			if (No == 0) {
-				tx = game()->player()->pos().x / 30;
-				ty = game()->player()->pos().y / 30;
+				//tx,tyはそのまま
 			}
 			else if (No == 1) {
-				tx = game()->player()->pos().x / 30;
-				ty = game()->player()->pos().y / 30;
-				if (isPress(KEY_D))tx += 4;
-				else if (isPress(KEY_A))tx -= 4;
-				else if (isPress(KEY_S))ty += 4;
-				else if (isPress(KEY_W)) { tx -= 4; ty -= 4; }
+				//４つ先をターゲットに。
+				int angle = game()->player()->angle();
+				if (angle == 180)tx += 4;
+				else if (angle == 0)tx -= 4;
+				else if (angle == -90)ty += 4;
+				//playerが上を向いているときは左上。
+				else if (angle == 90) { tx -= 4; ty -= 4; }
 			}
 			else if (No == 2) {
-				tx = game()->player()->pos().x / 30;
-				ty = game()->player()->pos().y / 30;
-				if (isPress(KEY_D))tx += 2;
-				else if (isPress(KEY_A))tx -= 2;
-				else if (isPress(KEY_S))ty += 2;
-				else if (isPress(KEY_W)) { tx -= 2; ty -= 2; }
+				//まずplayerの２つ先をターゲットに
+				int angle = game()->player()->angle();
+				if (angle == 180)tx += 2;
+				else if (angle == 0)tx -= 2;
+				else if (angle == -90)ty += 2;
+				else if (angle == 90) { tx -= 2; ty -= 2; }
+				//redGhostからターゲットへのベクトルの２倍をターゲットとする
 				tx += (tx - game()->redGhost()->pos().x / 30);
 				ty += (ty - game()->redGhost()->pos().y / 30);
 			}
-			if (No == 3) {
-				tx = game()->player()->pos().x / 30;
-				ty = game()->player()->pos().y / 30;
-				if (pow2(tx - cx) + pow2(ty - cx) >= 64) {
-					tx = 33; ty = 29;
+			else if (No == 3) {
+				//playerと離れているときは、SCATTER時と同じにする。
+				if ((pow2(tx - cx) + pow2(ty - cy)) >= 64) {
+					tx = 23; ty = 32;
 				}
 			}
 		}

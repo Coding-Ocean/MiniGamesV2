@@ -15,6 +15,7 @@ namespace GAME04 {
         void update();
         void draw();
         INT2 pos() { return Pos; }
+        int angle() { return Angle; }
     private:
         int Size;
         float OfstX;
