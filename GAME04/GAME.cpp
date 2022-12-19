@@ -56,9 +56,9 @@ namespace GAME04 {
 		if (isTrigger(KEY_R)) {
 			Init();
 		}
+		//更新
 		colorMode(HSV, 100);
 		angleMode(DEGREES);
-		//更新
 		if (State == PLAY) {
 			for (ACTOR* actor : Actors) {
 				actor->update();

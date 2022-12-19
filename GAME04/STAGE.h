@@ -50,8 +50,8 @@ namespace GAME04 {
 
         int SndOpenning;
         int SndEat;
+        int SndFrightened;
         int SndClear;
-
     };
 
 }

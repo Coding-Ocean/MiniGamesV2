@@ -51,7 +51,6 @@ namespace GAME04 {
         INT2 DIR[4];
         int DirIdx;
 
-        int SndFrightened;
         int SndEatGhost;
         int SndOver;
     };

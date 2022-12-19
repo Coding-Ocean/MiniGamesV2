@@ -27,6 +27,7 @@ namespace GAME04 {
 		SndOpenning = loadSound("assets\\GAME04\\s_beginning.wav");
 		SndEat = loadSound("assets\\GAME04\\s_eat.wav");
 		SndClear = loadSound("assets\\GAME04\\s_intermission.wav");
+		SndFrightened = loadSound("assets\\GAME04\\s_frightened.wav");
 	}
 
 	void STAGE::destroy()
@@ -61,6 +62,7 @@ namespace GAME04 {
 	{
 		if (NumFood <= 0) {
 			game()->toClear();
+			stopSound(SndFrightened);
 			playSound(SndClear);
 		}
 	}
@@ -154,6 +156,7 @@ namespace GAME04 {
 			Map[i] = '.';
 		}
 		else if (Map[i] == 'p') {
+			playSound(SndFrightened);
 			NumFood--;
 			Map[i] = '.';
 			PowerFoodEaten = 1;

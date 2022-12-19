@@ -76,7 +76,6 @@ namespace GAME04 {
 		ImgEaten[2] = loadImage("assets\\GAME04\\ghost_eaten_d.png");
 		ImgEaten[3] = loadImage("assets\\GAME04\\ghost_eaten_r.png");
 
-		SndFrightened = loadSound("assets\\GAME04\\s_frightened.wav");
 		SndEatGhost = loadSound("assets\\GAME04\\s_eatghost.wav");
 		SndOver = loadSound("assets\\GAME04\\s_over.wav");
 
@@ -178,7 +177,6 @@ namespace GAME04 {
 			ScatterChaseCnt = 0;
 			FrightenedCnt = 10 * 60;
 			FrightenedFlag = 1;
-			if(No==0)playLoopSound(SndFrightened);
 		}
 		if (FrightenedCnt > 0) {
 			FrightenedCnt--;
@@ -188,10 +186,6 @@ namespace GAME04 {
 					Mode = SCATTER;
 				}
 				ScatterChaseCnt = 0;
-				if (No == 0)stopSound(SndFrightened);
-			}
-			if (!game()->playing()) {
-				if (No == 0)stopSound(SndFrightened);
 			}
 		}
 
@@ -252,7 +246,7 @@ namespace GAME04 {
 		if (DirIdx == R) { dirFlag[L] = 0; }//左から来たので左にいかない
 		if (DirIdx == U) { dirFlag[D] = 0; }//下から来たので下にいかない
 		if (DirIdx == L) { dirFlag[R] = 0; }//右から来たので右にいかない
-		//残りの方向のうち障害物ならフラッグを倒す
+		//残りの方向のうち壁ならフラッグを倒す
 		int cnt = 3;//この時点で候補は３方向
 		STAGE* stage = game()->stage();
 		if (dirFlag[U]) { if (stage->wall(cx, cy - 1)) { dirFlag[U] = 0; cnt--; } }
@@ -260,7 +254,7 @@ namespace GAME04 {
 		if (dirFlag[D]) { if (stage->wall(cx, cy + 1)) { dirFlag[D] = 0; cnt--; } }
 		if (dirFlag[R]) { if (stage->wall(cx + 1, cy)) { dirFlag[R] = 0; cnt--; } }
 
-		//進める方向が一つならベクトルをセットする
+		//進める方向が一つならDirIdx決定
 		if (cnt == 1) {
 			for (int i = 0; i < 4; i++) {
 				if (dirFlag[i]) {
@@ -328,12 +322,13 @@ namespace GAME04 {
 			tx = 450 / 30;
 			ty = 360 / 30;
 		}
-		//ターゲットに近い方向を求める
+		//cx,cyから１つ進んだ区画からターゲットまでの距離の２乗を求める
 		int dist[4] = { 99999,99999,99999,99999 };
 		if (dirFlag[U]) { dist[U] = pow2(cx - tx) + pow2((cy - 1) - ty); }
 		if (dirFlag[L]) { dist[L] = pow2((cx - 1) - tx) + pow2(cy - ty); }
 		if (dirFlag[D]) { dist[D] = pow2(cx - tx) + pow2((cy + 1) - ty); }
 		if (dirFlag[R]) { dist[R] = pow2((cx + 1) - tx) + pow2(cy - ty); }
+		//一番近い方向のDirIdxを決定
 		int min = 99999;
 		int i = 0;
 		for (int j = 0; j < 4; j++) {
