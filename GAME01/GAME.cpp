@@ -29,8 +29,6 @@ namespace GAME01 { //自分でなにかファイルを追加したらincludeの後にこの行を追加す
 
 	void GAME::destroy()
 	{
-		releaseSound(gameOverSnd);
-		releaseSound(eatSnd);
 		for (ACTOR* actor : Actors) { delete actor; }
 		showCursor();
 	}

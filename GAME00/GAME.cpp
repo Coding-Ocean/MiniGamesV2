@@ -39,11 +39,6 @@ namespace GAME00 {
 
 	void GAME::destroy()
 	{
-		releaseSound(wallSnd);
-		releaseSound(winSnd);
-		releaseSound(playSnd);
-		releaseSound(aiSnd);
-		releaseSound(loseSnd);
 		for (ACTOR* actor : Actors) { delete actor; }
 		Score = Ball = Player = Ai = 0;
 		showCursor();
