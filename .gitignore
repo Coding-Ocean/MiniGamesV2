@@ -361,3 +361,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /MAIN/assets/MANAGER/data.txt
+/MAIN/MAIN.exe
